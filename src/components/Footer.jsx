@@ -7,10 +7,24 @@ const Foot = styled.footer`
   justify-content: space-around;
   justify-self: center;
   align-items: center;
-  width: 620px;
+  gap: 12px;
+  flex: 1;
+  /* width: 50%; */
+  /* width: auto; */
+
+  /* width: 620px; */
   height: 45px;
   margin: 16px 0;
+  padding: 16px;
   border-radius: 45px;
+  font-size: 14px;
+  font-weight: 400;
+  @media screen and (max-width: 459px) {
+    width: auto;
+  }
+  @media screen and (min-width: 736px) {
+    width: 50%;
+  }
 `;
 
 const Left = styled.div`

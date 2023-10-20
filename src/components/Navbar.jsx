@@ -29,15 +29,34 @@ const Logo = styled.span`
   font-weight: 700;
 `;
 
-const Center = styled.div`
+const Center = styled.form`
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 4px;
   width: 32%;
   height: 75%;
   border-radius: 18px;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.03);
+  /* background-color: rgba(0, 0, 0, 0.03); */
+  background-color: transparent;
   border: 2px solid rgba(0, 0, 0, 0.04);
+  padding: 0 5px;
+`;
+const SubmitBtn = styled.button`
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
 `;
 const Search = styled.input`
   width: 100%;
@@ -45,7 +64,8 @@ const Search = styled.input`
   font-size: 16px;
   font-weight: 400;
   border: none;
-  background-color: rgba(0, 0, 0, 0.03);
+  /* background-color: rgba(0, 0, 0, 0.03); */
+  background-color: transparent;
 
   transition: all 0.3s ease-in-out;
   &::-webkit-search-cancel-button {
@@ -78,19 +98,42 @@ const ProfilePic = styled.img`
   }
 `;
 
-const Navbar = () => {
+const Navbar = ({ search, setSearch, getSearchPhotos }) => {
   return (
     <Header>
       <Left>
         <Logo className="material-symbols-outlined">motion_photos_on</Logo>
         ImgDrop
       </Left>
-      <Center>
-        <Search type="search" />
+      <Center
+        onSubmit={(e) => {
+          e.preventDefault();
+          search === ""
+            ? alert("Please enter a search term")
+            : getSearchPhotos(search);
+        }}
+      >
+        {/* <SubmitBtn type="submit">
+          <span
+            className="material-symbols-outlined"
+            style={{ backgroundColor: "none" }}
+          >
+            search
+          </span>
+        </SubmitBtn> */}
+        <Search
+          type="search"
+          placeholder="Search..."
+          value={search}
+          onChange={(e) => {
+            setSearch(e.target.value);
+            console.log(search);
+          }}
+        />
       </Center>
       <Right>
         <a href="https://www.linkedin.com/in/khan-shadab/" target="_blank">
-          <ProfilePic src="/public/profile-pic.png" />
+          <ProfilePic src="/profile-pic.png" />
         </a>
       </Right>
     </Header>
