@@ -36,7 +36,6 @@ const Left = styled.div`
     }
   }
 `;
-const MadeBy = styled.p``;
 
 const Right = styled.div`
   a {
@@ -47,7 +46,6 @@ const Right = styled.div`
     }
   }
 `;
-const PoweredBy = styled.p``;
 
 const Footer = () => {
   return (

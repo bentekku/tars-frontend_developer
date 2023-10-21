@@ -13,40 +13,35 @@ const App = () => {
   // }, [search]);
 
   const getRandomPhotos = async () => {
-    // not unsplash api
-    // const OLD_URL = "https://picsum.photos/v2/list";
-    // const NEW_URL = "https://api.thecatapi.com/v1/images/search?limit=32";
-    // const response = await axios.get(NEW_URL);
+    // UNSPLASH API
+    const API_KEY = "LE3dfDN5WWzdq_7uk0VVACxvYL7EG5nIuYgBL3gjFFo";
+    const API_URL = "https://api.unsplash.com/";
+    const COUNT_ARG = "count=32";
+    const RANDOM_URL = `${API_URL}photos/random?client_id=${API_KEY}&${COUNT_ARG}`;
+
+    const response = await axios.get(RANDOM_URL);
     // console.log("response: ", response);
+
+    const data = await response.data;
     // console.log("data: ", response.data);
-    // setPhotos(await response.data);
-    // unsplash api
-    // const API_KEY = "LE3dfDN5WWzdq_7uk0VVACxvYL7EG5nIuYgBL3gjFFo";
-    // const API_URL = "https://api.unsplash.com/";
-    // const RANDOM_URL = `${API_URL}photos/random?client_id=${API_KEY}&query=${searchArg}&count=1`;
-    // const response = await axios.get(NEW_URL);
-    // console.log("response: ", response);
-    // console.log("data: ", response.data);
-    // setPhotos(await response.data);
+
+    setPhotos(data);
   };
 
   const getSearchPhotos = async (searchArg) => {
-    // not unsplash api
-    // const NEW_URL = "https://api.thecatapi.com/v1/images/search?limit=32";
-    // const response = await axios.get(NEW_URL);
-    // console.log("response: ", response);
-    // console.log("data: ", response.data);
-    // setPhotos(await response.data);
-
-    // unsplash api
+    // UNSPLASH API
     const API_KEY = "LE3dfDN5WWzdq_7uk0VVACxvYL7EG5nIuYgBL3gjFFo";
     const API_URL = "https://api.unsplash.com/";
-    const COUNT_ARG = "count=4";
-    const QUERY_COUNT_URL = `${API_URL}photos/random?client_id=${API_KEY}&query=${searchArg}&${COUNT_ARG}`;
+    const COUNT_ARG = "count=32";
+    const QUERY_COUNT_URL = `${API_URL}search/photos?client_id=${API_KEY}&query=${searchArg}&${COUNT_ARG}`;
+
     const response = await axios.get(QUERY_COUNT_URL);
-    console.log("response: ", response);
-    console.log("data: ", response.data);
-    setPhotos(await response.data);
+    // console.log("response: ", response);
+
+    const data = await response.data;
+    // console.log("data: ", response.data);
+
+    setPhotos(data);
   };
 
   useEffect(() => {

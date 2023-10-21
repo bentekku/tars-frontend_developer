@@ -20,6 +20,9 @@ const Left = styled.div`
   font-size: 21px;
   font-weight: 600;
   color: #000;
+  @media screen and (max-width: 736px) {
+    margin: 0 18px;
+  }
 `;
 const Logo = styled.span`
   display: flex;
@@ -42,6 +45,10 @@ const Center = styled.form`
   background-color: transparent;
   border: 2px solid rgba(0, 0, 0, 0.04);
   padding: 0 5px;
+  @media screen and (max-width: 736px) {
+    flex: 1;
+    margin: 0 18px;
+  }
 `;
 const SubmitBtn = styled.button`
   border: none;
@@ -82,6 +89,9 @@ const Right = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 736px) {
+    display: none;
+  }
 `;
 const ProfilePic = styled.img`
   width: 48px;

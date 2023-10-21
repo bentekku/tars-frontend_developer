@@ -14,9 +14,10 @@ const Container = styled.div`
 `;
 
 const Gallery = ({ photos }) => {
+  const photosAry = Array.from(photos);
   return (
     <Container>
-      {photos.map((photo, indx) => (
+      {photosAry.map((photo, indx) => (
         <Picture key={indx} photo={photo} />
       ))}
     </Container>
