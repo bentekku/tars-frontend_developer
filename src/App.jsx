@@ -41,7 +41,7 @@ const App = () => {
     // unsplash api
     const API_KEY = "LE3dfDN5WWzdq_7uk0VVACxvYL7EG5nIuYgBL3gjFFo";
     const API_URL = "https://api.unsplash.com/";
-    const COUNT_ARG = "count=5";
+    const COUNT_ARG = "count=4";
     const QUERY_COUNT_URL = `${API_URL}photos/random?client_id=${API_KEY}&query=${searchArg}&${COUNT_ARG}`;
     const response = await axios.get(QUERY_COUNT_URL);
     console.log("response: ", response);
