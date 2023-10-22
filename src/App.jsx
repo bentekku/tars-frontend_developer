@@ -8,22 +8,25 @@ import axios from "axios";
 const App = () => {
   const [photos, setPhotos] = useState([]);
   const [search, setSearch] = useState("");
-  // useEffect(() => {
-  //   getSearchPhotos(search);
-  // }, [search]);
+
+  // for real-time render of the search term entered in the search input
+  useEffect(() => {
+    search === "" ? null : getSearchPhotos(search);
+  }, [search]);
 
   const getRandomPhotos = async () => {
     // UNSPLASH API
     const API_KEY = "LE3dfDN5WWzdq_7uk0VVACxvYL7EG5nIuYgBL3gjFFo";
     const API_URL = "https://api.unsplash.com/";
+    // the number of photos that can be fetched from unsplash API is limited to 30 per request
     const COUNT_ARG = "count=32";
     const RANDOM_URL = `${API_URL}photos/random?client_id=${API_KEY}&${COUNT_ARG}`;
 
     const response = await axios.get(RANDOM_URL);
-    // console.log("response: ", response);
+    console.log("response of getRandomPhotos: ", response);
 
     const data = await response.data;
-    // console.log("data: ", response.data);
+    console.log("data of getRandomPhotos: ", data);
 
     setPhotos(data);
   };
@@ -32,14 +35,14 @@ const App = () => {
     // UNSPLASH API
     const API_KEY = "LE3dfDN5WWzdq_7uk0VVACxvYL7EG5nIuYgBL3gjFFo";
     const API_URL = "https://api.unsplash.com/";
-    const COUNT_ARG = "count=32";
-    const QUERY_COUNT_URL = `${API_URL}search/photos?client_id=${API_KEY}&query=${searchArg}&${COUNT_ARG}`;
+    const PER_PAGE = "per_page=32";
+    const QUERY_COUNT_URL = `${API_URL}search/photos?client_id=${API_KEY}&query=${searchArg}&${PER_PAGE}`;
 
     const response = await axios.get(QUERY_COUNT_URL);
-    // console.log("response: ", response);
+    console.log("response of getSearchPhotos: ", response);
 
-    const data = await response.data;
-    // console.log("data: ", response.data);
+    const data = await response.data.results;
+    console.log("data of getSearchPhotos: ", data);
 
     setPhotos(data);
   };

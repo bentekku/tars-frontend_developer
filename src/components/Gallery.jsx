@@ -5,7 +5,6 @@ const Container = styled.div`
   padding: 4rem 2rem;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   gap: 11px;
   flex-wrap: wrap;
   min-height: 100vh;

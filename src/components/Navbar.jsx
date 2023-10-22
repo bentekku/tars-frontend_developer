@@ -50,21 +50,6 @@ const Center = styled.form`
     margin: 0 18px;
   }
 `;
-const SubmitBtn = styled.button`
-  border: none;
-  cursor: pointer;
-  background-color: transparent;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-  }
-`;
 const Search = styled.input`
   width: 100%;
   padding: 0.5rem 1rem;
@@ -108,7 +93,7 @@ const ProfilePic = styled.img`
   }
 `;
 
-const Navbar = ({ search, setSearch, getSearchPhotos }) => {
+const Navbar = ({ search, setSearch, getSearchPhotos, getRandomPhotos }) => {
   return (
     <Header>
       <Left>
@@ -123,14 +108,6 @@ const Navbar = ({ search, setSearch, getSearchPhotos }) => {
             : getSearchPhotos(search);
         }}
       >
-        {/* <SubmitBtn type="submit">
-          <span
-            className="material-symbols-outlined"
-            style={{ backgroundColor: "none" }}
-          >
-            search
-          </span>
-        </SubmitBtn> */}
         <Search
           type="search"
           placeholder="Search..."

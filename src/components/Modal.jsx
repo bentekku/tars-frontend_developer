@@ -16,17 +16,17 @@ const Container = styled.div`
 
   z-index: 5;
 `;
-const Overlay = styled.div`
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(2px);
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-`;
+// const Overlay = styled.div`
+//   height: 100%;
+//   width: 100%;
+//   background-color: rgba(0, 0, 0, 0.5);
+//   backdrop-filter: blur(2px);
+//   position: fixed;
+//   top: 0;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+// `;
 const CloseBtn = styled.button`
   position: absolute;
   top: -25px;
@@ -37,12 +37,19 @@ const CloseBtn = styled.button`
   font-size: 18px;
   font-weight: 700;
   border-radius: 100%;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.6);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   z-index: 10;
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-variation-settings: "FILL" 1, "wght" 900, "GRAD" 0, "opsz" 48;
+    color: #000;
+  }
   &:hover {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.85);
     transform: scale(1.1);
   }
 `;
@@ -88,7 +95,8 @@ const Details = styled.div`
     display: flex;
     justify-content: center;
     align-items: start;
-    div:first-of-type {
+    div:nth-of-type(1),
+    div:nth-of-type(2) {
       margin-right: 16px;
     }
     div {
@@ -109,6 +117,37 @@ const Details = styled.div`
   }
   @media screen and (max-width: 736px) {
     gap: 24px;
+  }
+`;
+const UnsplashBtn = styled.button`
+  border: none;
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  background-color: transparent;
+  border-radius: 8px;
+
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  a {
+    text-decoration: none;
+
+    span {
+      color: #000;
+      font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    }
+  }
+
+  &:hover {
+    color: rgba(0, 0, 0, 0.8);
+  }
+  &:active {
+    transform: scale(0.9);
   }
 `;
 
@@ -160,7 +199,6 @@ const Username = styled.p`
 //     font-size: 21px;
 //   }
 // `;
-
 const ProfilePic = styled.img`
   height: 64px;
   width: 64px;
@@ -181,12 +219,20 @@ const Modal = ({ imgInfo, modal, setModal, calAspectRatio }) => {
     userPfp,
     imgHeight,
     imgWidht,
+    unsplashLink,
   } = imgInfo;
   return (
     <Container onClick={() => setModal(!modal)}>
-      <Overlay />
-      <Wrapper>
-        <CloseBtn onClick={() => setModal(!modal)}>X</CloseBtn>
+      {/* <Overlay /> */}
+      <Wrapper
+        onClick={(evt) => {
+          // stops the event from bubbling up or in simple words, clicking on this div will not close the modal, which was getting triggered by the even clicking on the Wrapper itself
+          evt.stopPropagation();
+        }}
+      >
+        <CloseBtn onClick={() => setModal(!modal)}>
+          <span className="material-symbols-outlined">close</span>
+        </CloseBtn>
         <ImgWrapper>
           <Img
             src={img}
@@ -208,15 +254,30 @@ const Modal = ({ imgInfo, modal, setModal, calAspectRatio }) => {
           <div className="stats">
             <div>
               <p>
-                <span class="material-symbols-outlined">favorite</span> {likes}
+                <span className="material-symbols-outlined">favorite</span>{" "}
+                {likes}
               </p>
             </div>
             <div>
               <p>
-                <span class="material-symbols-outlined">download</span>
+                <span className="material-symbols-outlined">download</span>
                 {downloads}
               </p>
             </div>
+            <UnsplashBtn>
+              <a href={unsplashLink} target="_blank">
+                <span
+                  className="material-symbols-outlined"
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  info
+                </span>
+              </a>
+            </UnsplashBtn>
           </div>
         </Details>
       </Wrapper>

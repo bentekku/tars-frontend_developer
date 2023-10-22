@@ -161,9 +161,11 @@ const Picture = ({ photo }) => {
   const toggleModal = () => {
     setModal(!modal);
   };
-  useEffect(() => {
-    console.log(modal);
-  }, [modal]);
+
+  // for debugging
+  // useEffect(() => {
+  //   console.log("isModalOpen: ", modal);
+  // }, [modal]);
 
   return (
     <>
