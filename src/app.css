@@ -5,7 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
-  outline: 1px solid red;
+  /* outline: 1px solid red; */ /* for debugging */
 }
 
 /* changing the background color and text color of the selection */
