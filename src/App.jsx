@@ -33,7 +33,7 @@ const App = () => {
 
   const getSearchPhotos = async (searchArg) => {
     // UNSPLASH API
-    const API_KEY = "CEomnCGgtLoMXjsGcpy1tkk6sl48bYMnVSOxnBc1Hg";
+    const API_KEY = "-CEomnCGgtLoMXjsGcpy1tkk6sl48bYMnVSOxnBc1Hg";
     const API_URL = "https://api.unsplash.com/";
     const PER_PAGE = "per_page=32";
     const QUERY_COUNT_URL = `${API_URL}search/photos?client_id=${API_KEY}&query=${searchArg}&${PER_PAGE}`;
