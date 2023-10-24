@@ -16,7 +16,7 @@ const App = () => {
 
   const getRandomPhotos = async () => {
     // UNSPLASH API
-    const API_KEY = "LE3dfDN5WWzdq_7uk0VVACxvYL7EG5nIuYgBL3gjFFo";
+    const API_KEY = "-CEomnCGgtLoMXjsGcpy1tkk6sl48bYMnVSOxnBc1Hg";
     const API_URL = "https://api.unsplash.com/";
     // the number of photos that can be fetched from unsplash API is limited to 30 per request
     const COUNT_ARG = "count=32";
